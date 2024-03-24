@@ -4,11 +4,6 @@ from src.class_category import Category
 
 
 @pytest.fixture
-def empty_category():
-    return Category("Empty Category", "No description", [])
-
-
-@pytest.fixture
 def filled_category():
     return Category("Filled Category", "Has description", ["Product 1", "Product 2"])
 
@@ -23,11 +18,17 @@ def test_get_products(filled_category):
 
 
 def test_total_categories():
-    assert Category.total_categories == 1
+    assert Category.total_categories == 2  # Предполагается, что предыдущие тесты создали две категории
 
 
 def test_total_products(filled_category):
-    assert Category.total_products == 4  # Предполагается, что предыдущие тесты создали 4 продукта в категориях
+    assert Category.total_products == 7
+
+
+def test_products_info(capsys, filled_category):
+    filled_category.products_info()
+    captured = capsys.readouterr()
+    assert captured.out == "Product 1, 80 руб. Остаток: 15 шт.\nProduct 2, 80 руб. Остаток: 15 шт.\n"
 
 
 if __name__ == "__main__":
