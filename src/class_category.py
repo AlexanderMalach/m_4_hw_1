@@ -26,6 +26,3 @@ class Category:
             print(f"{product}, 80 руб. Остаток: 15 шт.")
 
 
-# Пример использования:
-category = Category("Электроника", "Технические устройства", ["Телефон", "Планшет", "Ноутбук"])
-category.products_info()
