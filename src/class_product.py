@@ -5,11 +5,11 @@ class Product:
     _price: float
     quantity_stock: int
 
-    def __init__(self, name: str, description: str, price: float, quantity_stock: int):
+    def __init__(self, name: str, description: str, price: float, quantity: int):
         self.name = name
         self.description = description
         self.price = price
-        self.quantity_stock = quantity_stock
+        self.quantity_stock = quantity
 
     @property
     def price(self):
@@ -25,6 +25,10 @@ class Product:
             self._price = value
 
     @classmethod
-    def create_product(cls, name: str, description: str, price: float, quantity_stock: int):
+    def create_product(cls, dict_info):
         """Метод класса для создания объекта товара"""
-        return cls(name, description, price, quantity_stock)
+        name = dict_info['name']
+        description = dict_info['description']
+        price = dict_info['price']
+        quantity = dict_info['quantity']
+        return cls(name, description, price, quantity)
