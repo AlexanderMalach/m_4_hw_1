@@ -24,10 +24,5 @@ def test_total_products(filled_category):
     assert Category.total_products == 5
 
 
-def test_products_info(filled_category):
-    expected_output = "Product 1, 80 руб. Остаток: 15 шт.\nProduct 2, 80 руб. Остаток: 15 шт.\n"
-    assert filled_category.products_info() == expected_output
-
-
 if __name__ == "__main__":
     pytest.main()

@@ -6,26 +6,22 @@ class Category:
     def __init__(self, name: str, description: str, products: list):
         self.name = name
         self.description = description
-        self._products = []  # Приватный атрибут для хранения списка товаров
-        self.add_products(products)  # Используем метод для добавления товаров
+        self.__products = []  # Приватный атрибут для хранения списка товаров
         Category.total_categories += 1
         Category.total_products += len(products)
 
     def add_products(self, products: list):
         """Метод для добавления товаров в категорию"""
         for product in products:
-            self._products.append(product)
+            self.__products.append(product)
 
     def get_products(self):
         """Метод для получения списка товаров"""
-        return self._products
+        return self.__products
 
-    def products_info(self):
+    @property
+    def products(self, price: float, quantity_stock: int):
         """Геттер для вывода информации о товарах"""
-        for product in self._products:
-            print(f"{product}, 80 руб. Остаток: 15 шт.")
+        for product in self.__products:
+            print(f"{product}, {price} руб. Остаток: {quantity_stock} шт.")
 
-
-# Пример использования:
-category = Category("Электроника", "Технические устройства", ["Телефон", "Планшет", "Ноутбук"])
-category.products_info()
