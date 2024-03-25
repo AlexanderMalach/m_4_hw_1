@@ -16,6 +16,7 @@ class Category:
         for product in products:
             self.__products.append(product)
 
+    @property
     def product_info(self):
         """Метод для вывода информации о товарах"""
         list_info = []
