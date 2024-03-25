@@ -1,33 +1,23 @@
 import pytest
 
 from src.class_category import Category
+from src.class_product import Product
 
 
 @pytest.fixture
-def filled_category():
-    return Category("Filled Category", "Has description", ["Product 1", "Product 2"])
+def sample_category():
+    products = [Product("Product 1", "Description 1", 10.0, 100), Product("Product 2", "Description 2", 20.0, 50)]
+    return Category("Test Category", "Test Description", products)
 
 
-def test_add_products(empty_category):
-    empty_category.add_products(["Product A", "Product B"])
-    assert empty_category.get_products() == ["Product A", "Product B"]
+def test_category_creation(sample_category):
+    assert sample_category.name == "Test Category"
+    assert sample_category.description == "Test Description"
+    assert len(sample_category._Category__products) == 2
+    assert Category.total_categories == 1
+    assert Category.total_products == 2
 
 
-def test_get_products(filled_category):
-    assert filled_category.get_products() == ["Product 1", "Product 2"]
-
-
-def test_total_categories():
-    assert Category.total_categories == 2
-
-def test_total_products(filled_category):
-    assert Category.total_products == 5
-
-
-def test_products_info(filled_category):
-    expected_output = "Product 1, 80 руб. Остаток: 15 шт.\nProduct 2, 80 руб. Остаток: 15 шт.\n"
-    assert filled_category.products_info() == expected_output
-
-
-if __name__ == "__main__":
-    pytest.main()
+def test_product_info(sample_category):
+    expected_info = ["Product 1, 10.0 руб. Остаток: 100 шт.", "Product 2, 20.0 руб. Остаток: 50 шт."]
+    assert sample_category.product_info() == expected_info
