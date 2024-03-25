@@ -1,30 +1,33 @@
+import pytest
+
 from src.class_product import Product
 
 
-def test_product_creation():
-    test_name = 'Fuji'
-    test_description = 'The apples have yellowish skin and orange-red stripes and are round in shape'
-    test_price = 30.5
-    test_quantity_stock = 300
-
-    copy = Product(test_name, test_description, price=test_price, quantity_stock=test_quantity_stock)
-
-    assert copy
+@pytest.fixture
+def product():
+    return Product("Телефон", "Смартфон", 1000.0, 10)
 
 
-def test_product_attributes():
-    test_name = 'Fuji'
-    test_description = 'The apples have yellowish skin and orange-red stripes and are round in shape'
-    test_price = 30.5
-    test_quantity_stock = 300
+def test_create_product():
+    p = Product.create_product("Ноутбук", "Мощный ноутбук", 1500.0, 5)
+    assert isinstance(p, Product)
+    assert p.name == "Ноутбук"
+    assert p.description == "Мощный ноутбук"
+    assert p.price == 1500.0
+    assert p.quantity_stock == 5
 
-    copy = Product(test_name, test_description, price=test_price, quantity_stock=test_quantity_stock)
 
-    assert copy.name == 'Fuji'
-    assert isinstance(copy.name, str)
-    assert copy.description == 'The apples have yellowish skin and orange-red stripes and are round in shape'
-    assert isinstance(copy.description, str)
-    assert copy.price == 30.5
-    assert isinstance(copy.price, float)
-    assert copy.quantity_stock == 300
-    assert isinstance(copy.quantity_stock, int)
+def test_price_setter_valid(product):
+    product.price = 1200.0
+    assert product.price == 1200.0
+
+
+def test_price_setter_invalid(product, capsys):
+    product.price = -500.0
+    assert product.price == 1000.0  # Устанавливается старое значение цены из-за некорректного ввода
+    captured = capsys.readouterr()
+    assert "Ошибка: Цена введена некорректно." in captured.out
+
+
+if __name__ == "__main__":
+    pytest.main()
