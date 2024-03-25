@@ -10,18 +10,15 @@ class Category:
         Category.total_categories += 1
         Category.total_products += len(products)
 
-    def add_products(self, products: list):
+    def add_products(self, product: list):
         """Метод для добавления товаров в категорию"""
-        for product in products:
-            self.__products.append(product)
-
-    def get_products(self):
-        """Метод для получения списка товаров"""
-        return self.__products
+        self.__products.append(product)
 
     @property
-    def products(self, price: float, quantity_stock: int):
+    def product_info(self, price: float, quantity_stock: int):
         """Геттер для вывода информации о товарах"""
+        list_info = []
         for product in self.__products:
-            print(f"{product}, {price} руб. Остаток: {quantity_stock} шт.")
+            list_info.append(f"{product}, {price} руб. Остаток: {quantity_stock} шт.")
+        return list_info
 
