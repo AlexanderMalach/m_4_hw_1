@@ -25,7 +25,7 @@ class Product:
             self._price = value
 
     @classmethod
-    def create_product(cls, dict_info):
+    def create_product(cls, dict_info: dict):
         """Метод класса для создания объекта товара"""
         name = dict_info['name']
         description = dict_info['description']
