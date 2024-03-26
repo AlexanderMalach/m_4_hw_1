@@ -1,3 +1,6 @@
+from src.class_product import Product
+
+
 class Category:
     """Класс для представления категории"""
     total_categories = 0
@@ -15,11 +18,19 @@ class Category:
         """Метод для добавления товаров в категорию"""
         for product in products:
             self.__products.append(product)
+        Category.total_products += 1  # @property
 
-    @property
-    def product_info(self):
+    # def product_info(self):
+    #     """Метод для вывода информации о товарах"""
+    #     list_info = []
+    #     for product in self.__products:
+    #         list_info.append(f"{product.name}, {product.price} руб. Остаток: {product.quantity_stock} шт.")
+    #     return list_info
+
+    def __str__(self):
         """Метод для вывода информации о товарах"""
         list_info = []
         for product in self.__products:
-            list_info.append(f"{product.name}, {product.price} руб. Остаток: {product.quantity_stock} шт.")
+            list_info.append(f"{Product.name}, {Product.price} руб. Остаток: {Product.quantity_stock} шт.")
         return list_info
+
