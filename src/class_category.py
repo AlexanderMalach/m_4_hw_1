@@ -10,7 +10,6 @@ class Category:
         self.name = name
         self.description = description
         self.__products = []  # Приватный атрибут для хранения списка товаров
-        self.add_products(products)  # Добавляем товары при инициализации
         Category.total_categories += 1
         Category.total_products += len(products)
 
