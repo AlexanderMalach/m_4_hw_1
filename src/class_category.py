@@ -13,7 +13,7 @@ class Category:
         Category.total_categories += 1
         Category.total_products += len(products)
 
-    def add_products(self, products: str):
+    def add_products(self, product: str):
         """Метод для добавления товаров в категорию"""
         return self.__products.append(product)
 
