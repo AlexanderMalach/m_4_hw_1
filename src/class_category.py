@@ -9,7 +9,7 @@ class Category:
     def __init__(self, name: str, description: str, products: list):
         self.name = name
         self.description = description
-        self.__products = []  # Приватный атрибут для хранения списка товаров
+        self.__products = products
         Category.total_categories += 1
         Category.total_products += len(products)
 
