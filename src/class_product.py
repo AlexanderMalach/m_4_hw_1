@@ -8,13 +8,13 @@ class Product:
     def __init__(self, name: str, description: str, price: float, quantity: int):
         self.name = name
         self.description = description
-        self.price = price
+        self.__price = price
         self.quantity_stock = quantity
 
     @property
     def price(self):
         """Геттер для атрибута цены"""
-        return self._price
+        return self.__price
 
     @price.setter
     def price(self, value):
@@ -22,10 +22,10 @@ class Product:
         if value <= 0:
             print("Ошибка: Цена введена некорректно.")
         else:
-            self._price = value
+            self.__price = value
 
     @classmethod
-    def create_product(cls, dict_info):
+    def create_product(cls, dict_info: dict):
         """Метод класса для создания объекта товара"""
         name = dict_info['name']
         description = dict_info['description']
