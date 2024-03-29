@@ -21,3 +21,10 @@ class Category:
         for product in self.__products:
             list_info.append(f"{product.name}, {product.price} руб. Остаток: {product.quantity_stock} шт.")
         return list_info
+
+    def __str__(self):
+        """Метод для вывода информации о товарах"""
+        list_info = []
+        for product in self.__products:
+            list_info.append(f"{product.name}, {product.price} руб. Остаток: {product.quantity_stock} шт.")
+        return list_info
