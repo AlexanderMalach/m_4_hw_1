@@ -1,3 +1,6 @@
+from src.class_product import Product
+
+
 class Category:
     """Класс для представления категории"""
     total_categories = 0
@@ -10,11 +13,15 @@ class Category:
         Category.total_categories += 1
         Category.total_products += len(products)
 
-    def add_products(self, product: str):
+    def add_products(self, product: Product):
         """Метод для добавления товаров в категорию"""
-        return self.__products.append(product)
+        self.__products.append(product)
+        Category.total_products += 1
 
-    def __str__(self):
+    def __len__(self) -> int():
+        return self.__products
+
+    def __str__(self) -> list[str]:
         """Метод для вывода информации о товарах"""
         list_info = []
         for product in self.__products:
