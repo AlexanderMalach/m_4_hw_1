@@ -37,3 +37,10 @@ class Product:
         """Метод для вывода информации о товаре"""
 
         return f"{self.name}, {self.__price} руб. Остаток: {self.quantity} шт."
+
+    def __add__(self, other):
+        return self.price * self.quantity + other.price * other.quantity
+
+
+
+p = Product("Test Product", "Test Description", 10.0, 100)

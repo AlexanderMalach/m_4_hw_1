@@ -17,16 +17,13 @@ class Category:
         self.__products.append(product)
         Category.total_products += 1
 
-    def __len__(self, product: Product) -> int():
-        total_product = 0
-        for i in self.__products:
-            total_product += product.quantity
+    def __len__(self) -> int():
+        return len(self.__products)
 
-        return total_product
-
-    def __str__(self):
+    def __str__(self, product: Product):
         """Метод для вывода информации о товарах"""
-        return f"{self.name}, количество продуктов: {len(self)} шт."
+        return f"{product.name}, количество продуктов: {product.quantity} шт."
+
 
 
 z = Category('apple', 'red', ['1', '2', '3'])
