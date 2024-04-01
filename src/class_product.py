@@ -42,6 +42,3 @@ class Product:
         return self.price * self.quantity + other.price * other.quantity
 
 
-p = Product("Test Product", "Test Description", 10.0, 100)
-
-print(p)
