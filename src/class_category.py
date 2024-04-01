@@ -19,7 +19,8 @@ class Category:
         Category.total_products += 1
 
     def __len__(self) -> int():
-        return self.__products
+        len_products = len(self.__products)
+        return len_products
 
     def __str__(self) -> list[str]:
         """Метод для вывода информации о товарах"""
