@@ -20,11 +20,3 @@ class Category:
         for product in self.__products:
             list_info.append(f"{product.name}, {product.price} руб. Остаток: {product.quantity_stock} шт.")
         return list_info
-
-    @property
-    def product_info(self):
-        """Метод для вывода информации о товарах"""
-        list_info = []
-        for product in self.__products:
-            list_info.append(f"{product.name}, {product.price} руб. Остаток: {product.quantity_stock} шт.")
-        return list_info
