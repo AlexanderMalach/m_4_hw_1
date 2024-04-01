@@ -25,5 +25,5 @@ class Category:
         """Метод для вывода информации о товарах"""
         list_info = []
         for product in self.__products:
-            list_info.append(f"{self.name}, количество продуктов: {len_products} шт.")
+            list_info.append(f"{self.name}, количество продуктов: {Category} шт.")
         return list_info
