@@ -32,3 +32,10 @@ class Product:
         price = dict_info['price']
         quantity = dict_info['quantity']
         return cls(name, description, price, quantity)
+
+    def __str__(self) -> list[str]:
+        """Метод для вывода информации о товарах"""
+        list_info = []
+        for product in self.__products:
+            list_info.append(f"{product.name}, {product.price} руб. Остаток: {product.quantity_stock} шт.")
+        return list_info
