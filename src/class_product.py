@@ -1,21 +1,44 @@
-import pytest
-from src.class_p import Product
+class Product:
+    """ Класс для предоставления товара"""
+    name: str
+    description: str
+    __price: float
+    quantity: int
 
-@pytest.fixture
-def sample_product():
-    return Product("Test Product", "Test Description", 10.0, 100)
+    def __init__(self, name: str, description: str, price: float, quantity: int):
+        self.name = name
+        self.description = description
+        self.__price = price
+        self.quantity = quantity
 
-def test_create_product(sample_product):
-    assert sample_product.name == "Test Product"
-    assert sample_product.description == "Test Description"
-    assert sample_product.price == 10.0
-    assert sample_product.quantity == 100
+    @property
+    def price(self):
+        """Геттер для атрибута цены"""
+        return self.__price
 
-def test_price_getter_and_setter(sample_product):
-    sample_product.price = 20.0
-    assert sample_product.price == 20.0
+    @price.setter
+    def price(self, value):
+        """Сеттер для атрибута цены"""
+        if value <= 0:
+            print("Ошибка: Цена введена некорректно.")
+        else:
+            self.__price = value
 
-def test_add_method(sample_product):
-    other_product = Product("Other Product", "Other Description", 15.0, 50)
-    total_price = sample_product + other_product
-    assert total_price == 1750.0
+    @classmethod
+    def create_product(cls, dict_info: dict):
+        """Метод класса для создания объекта товара"""
+        name = dict_info['name']
+        description = dict_info['description']
+        price = dict_info['price']
+        quantity = dict_info['quantity']
+        return cls(name, description, price, quantity)
+
+    def __str__(self) -> str:
+        """Метод для вывода информации о товаре"""
+
+        return f"{self.name}, {self.__price} руб. Остаток: {self.quantity} шт."
+
+    def __add__(self, other):
+        return self.price * self.quantity + other.price * other.quantity
+
+
