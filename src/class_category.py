@@ -20,9 +20,9 @@ class Category:
     def __len__(self) -> int():
         return len(self.__products)
 
-    def __str__(self, product: Product):
+    def __str__(self):
         """Метод для вывода информации о товарах"""
-        return f"{product.name}, количество продуктов: {product.quantity} шт."
+        return f"{self.name}, количество продуктов: {len(self)} шт."
 
 
 

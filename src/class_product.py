@@ -43,4 +43,3 @@ class Product:
 
 
 
-p = Product("Test Product", "Test Description", 10.0, 100)
