@@ -26,6 +26,3 @@ class Category:
 
 
 
-z = Category('apple', 'red', ['1', '2', '3'])
-print(len(z))
-print((z))
