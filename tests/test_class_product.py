@@ -12,7 +12,7 @@ def test_product_creation(sample_product):
     assert sample_product.name == "Test Product"
     assert sample_product.description == "Test Description"
     assert sample_product.price == 10.0
-    assert sample_product.quantity_stock == 100
+    assert sample_product.quantity == 100
 
 
 def test_set_price(sample_product):
