@@ -2,7 +2,7 @@ class Product:
     """ Класс для предоставления товара"""
     name: str
     description: str
-    _price: float
+    __price: float
     quantity_stock: int
 
     def __init__(self, name: str, description: str, price: float, quantity: int):
