@@ -11,7 +11,6 @@ class Category:
         self.description = description
         self.__products = products
         Category.total_categories += 1
-        Category.total_products += len(products)
 
     def add_products(self, product: Product):
         """Метод для добавления товаров в категорию"""
@@ -26,5 +25,5 @@ class Category:
         """Метод для вывода информации о товарах"""
         list_info = []
         for product in self.__products:
-            list_info.append(f"{product.name}, {product.price} руб. Остаток: {product.quantity_stock} шт.")
+            list_info.append(f"{self.name}, количество продуктов: {len_products} шт.")
         return list_info

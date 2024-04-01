@@ -3,13 +3,13 @@ class Product:
     name: str
     description: str
     __price: float
-    quantity_stock: int
+    quantity: int
 
     def __init__(self, name: str, description: str, price: float, quantity: int):
         self.name = name
         self.description = description
         self.__price = price
-        self.quantity_stock = quantity
+        self.quantity = quantity
 
     @property
     def price(self):
@@ -33,9 +33,7 @@ class Product:
         quantity = dict_info['quantity']
         return cls(name, description, price, quantity)
 
-    def __str__(self) -> list[str]:
-        """Метод для вывода информации о товарах"""
-        list_info = []
-        for product in self.__products:
-            list_info.append(f"{product.name}, {product.price} руб. Остаток: {product.quantity_stock} шт.")
-        return list_info
+    def __str__(self) -> str:
+        """Метод для вывода информации о товаре"""
+
+        return f"{self.name}, {self.__price} руб. Остаток: {self.quantity} шт."
