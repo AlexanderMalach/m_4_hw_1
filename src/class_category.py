@@ -23,4 +23,7 @@ class Category:
 
     def __str__(self):
         """Метод для вывода информации о товарах"""
-        return f"{self.name}, количество продуктов: {len(self)} шт."
+        total_product = 0
+        for i in self.__products:
+            total_product += Product.quantity
+        return f"{self.name}, количество продуктов: {total_product} шт."
