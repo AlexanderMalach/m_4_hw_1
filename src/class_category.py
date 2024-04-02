@@ -27,3 +27,4 @@ class Category:
         for i in self.__products:
             total_product += Product.quantity
         return f"{self.name}, количество продуктов: {total_product} шт."
+
