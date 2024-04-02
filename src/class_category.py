@@ -18,10 +18,10 @@ class Category:
         self.__products.append(product)
         Category.total_products += 1
 
-    def __len__(self) -> int():
+    def __len__(self) -> int:
         return len(self.__products)
 
-    def __str__(self):
+    def __str__(self) -> str:
         """Метод для вывода информации о товарах"""
         total_product = 0
         for i in self.__products:
