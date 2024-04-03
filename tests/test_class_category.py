@@ -13,15 +13,15 @@ def sample_category():
 def test_create_category(sample_category):
     assert sample_category.name == "Test Category"
     assert sample_category.description == "Test Description"
-    assert len(sample_category) == 2
+    assert len(sample_category) == 150
 
 
 def test_add_products(sample_category):
     new_product = Product("New Product", "New Description", 20.0, 75)
     sample_category.add_products(new_product)
-    assert len(sample_category) == 3
+    assert len(sample_category) == 225
     assert sample_category.total_products == 3
 
 
 def test_category_length(sample_category):
-    assert len(sample_category) == 2
+    assert len(sample_category) == 150
