@@ -19,11 +19,12 @@ class Category:
         Category.total_products += 1
 
     def __len__(self) -> int:
-        return len(self.__products)
-
-    def __str__(self) -> str:
-        """Метод для вывода информации о товарах"""
         total_product = 0
         for i in self.__products:
             total_product += Product.quantity
-        return f"{self.name}, количество продуктов: {total_product} шт."
+        return total_product
+
+    def __str__(self) -> str:
+        """Метод для вывода информации о товарах"""
+
+        return f"{self.name}, количество продуктов: {len(self)} шт."
