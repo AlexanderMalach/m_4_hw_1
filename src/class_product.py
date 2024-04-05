@@ -39,10 +39,10 @@ class Product:
         return f"{self.name}, {self.__price} руб. Остаток: {self.quantity} шт."
 
     def __add__(self, other):
-        if isinstance(type(other), self.__class__):
+        if isinstance(other, type(self)):
             return self.price * self.quantity + other.price * other.quantity
         else:
-            raise TypeError
+            return TypeError
 
 
 class Smartphone(Product):
@@ -71,3 +71,4 @@ s = Smartphone("Test Product2", "Test Description2", 20.0, 200, 1000, "USSR-fon 
 
 p2p = p + p2
 print(p2p)
+print(s+p2)
