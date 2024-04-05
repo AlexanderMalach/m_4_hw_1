@@ -39,7 +39,7 @@ class Product:
 
     def __add__(self, other):
         if not isinstance(other, type(self)):
-            return TypeError("Неверный тип данных")
+            return TypeError
         else:
             return self.price * self.quantity + other.price * other.quantity
 
@@ -57,7 +57,7 @@ class Smartphone(Product):
 
     def __add__(self, other):
         if not isinstance(other, Smartphone):
-            return TypeError("Неверный тип данных")
+            return TypeError
         else:
             return self.price * self.quantity + other.price * other.quantity
 
@@ -74,7 +74,7 @@ class Grass(Product):
 
     def __add__(self, other):
         if not isinstance(other, Grass):
-            return TypeError("Неверный тип данных")
+            return TypeError
         else:
             return self.price * self.quantity + other.price * other.quantity
 

@@ -38,7 +38,7 @@ def test_crete_smartphone(smartphone_product):
     assert smartphone_product.quantity == 200
     assert smartphone_product.performance == 1000.0
     assert smartphone_product.model == "USSR-fon - 20"
-    assert smartphone_product.pmc == 256
+    assert smartphone_product.storage_capacity == 256
     assert smartphone_product.color == "red"
 
 
@@ -50,4 +50,4 @@ def test_add_method_smartphone(smartphone_product):
 
 def test_add_smartphone_and_product(smartphone_product):
     other_product = Product("Other Product", "Other Description", 15.0, 50)
-    assert smartphone_product + other_product == TypeError
+    assert smartphone_product + other_product is TypeError
