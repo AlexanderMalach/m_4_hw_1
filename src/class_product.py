@@ -78,21 +78,3 @@ class Grass(Product):
         else:
             return self.price * self.quantity + other.price * other.quantity
 
-
-class Tes:
-    pass
-
-
-p = Product("Test Product", "Test Description", 10.0, 100)
-
-s = Smartphone("Test Product2", "Test Description2", 20.0, 200, 1000, "USSR-fon - 20", 256, "red")
-
-z = Tes
-ps = p+s
-sp = s+p
-ss = s+s
-print(ps)
-print(sp)
-print(ss)
-
-
