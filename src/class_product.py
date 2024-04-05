@@ -65,10 +65,3 @@ class Grass(Product):
         self.color = color
 
 
-p = Product("Test Product", "Test Description", 10.0, 100)
-p2 = Product("Test Product", "Test Description", 10.0, 100)
-s = Smartphone("Test Product2", "Test Description2", 20.0, 200, 1000, "USSR-fon - 20", 256, "red")
-
-p2p = p + p2
-print(p2p)
-print(s+p2)

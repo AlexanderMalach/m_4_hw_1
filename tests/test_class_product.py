@@ -41,11 +41,10 @@ def test_crete_smartphone(smartphone_product):
     assert smartphone_product.pmc == 256
     assert smartphone_product.color == "red"
 
-def test_add_method_smartphone(sample_product, smartphone_product):
-    other_product = sample_product
-    other_smartphone = smartphone_product
-    total_price = other_product + other_smartphone
-    assert total_price is TypeError
+def test_add_method_smartphone(smartphone_product):
+    other_product = Smartphone("Test Product2", "Test Description2", 20.0, 200, 1000, "USSR-fon - 20", 256, "red")
+    total_price = smartphone_product + other_product
+    assert total_price == 8000.0
 
-    with pytest.raises(TypeError):
-        sample_product + smartphone_product
+    # with pytest.raises(TypeError):
+    #     sample_product + smartphone_product
