@@ -39,10 +39,10 @@ class Product:
         return f"{self.name}, {self.__price} руб. Остаток: {self.quantity} шт."
 
     def __add__(self, other):
-        if isinstance(other, type(self)):
-            return self.price * self.quantity + other.price * other.quantity
+        if not isinstance(other, type(self)):
+            return TypeError("Неверный тип данных")
         else:
-            return TypeError
+            return self.price * self.quantity + other.price * other.quantity
 
 
 class Smartphone(Product):
@@ -56,10 +56,10 @@ class Smartphone(Product):
         self.color = color
 
     def __add__(self, other):
-        if isinstance(other, type(self)):
-            return self.price * self.quantity + other.price * other.quantity
+        if not isinstance(other, Smartphone):
+            return TypeError("Неверный тип данных")
         else:
-            return TypeError
+            return self.price * self.quantity + other.price * other.quantity
 
 
 class Grass(Product):
@@ -86,3 +86,10 @@ ss = s+s
 print(ps)
 print(sp)
 print(ss)
+
+
+# def __add__(self, other):
+#     if isinstance(other, Product) and isinstance(other, Smartphone):
+#         return self.price * self.quantity + other.price * other.quantity
+#     else:
+#         return TypeError("Нельзя складывать экземпляры разных классов")
