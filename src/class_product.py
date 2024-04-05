@@ -54,3 +54,9 @@ class Smartphone(Product):
 
 
 class Lawn_grass(Product):
+    def __init__(self, name: str, description: str, price: float, quantity: int, manufacturer_country: str,
+                 germination_period: str, color: str):
+        super().__init__(name, description, price, quantity)
+        self.manufacturer_country = manufacturer_country
+        self.germination_period = germination_period
+        self.color = color
