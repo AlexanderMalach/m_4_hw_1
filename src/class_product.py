@@ -42,3 +42,15 @@ class Product:
         return self.price * self.quantity + other.price * other.quantity
 
 
+class Smartphone(Product):
+
+    def __init__(self, name: str, description: str, price: float, quantity: int, performance: float, model: str,
+                 pmc: int, color: str):
+        super().__init__(name, description, price, quantity)
+        self.performance = performance
+        self.model = model
+        self.pmc = pmc
+        self.color = color
+
+
+class Lawn_grass(Product)
