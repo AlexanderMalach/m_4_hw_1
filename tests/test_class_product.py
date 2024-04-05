@@ -1,6 +1,6 @@
 import pytest
 
-from src.class_product import Product, Smartphone, Grass
+from src.class_product import Product, Smartphone
 
 
 @pytest.fixture
@@ -41,10 +41,13 @@ def test_crete_smartphone(smartphone_product):
     assert smartphone_product.pmc == 256
     assert smartphone_product.color == "red"
 
+
 def test_add_method_smartphone(smartphone_product):
     other_product = Smartphone("Test Product2", "Test Description2", 20.0, 200, 1000, "USSR-fon - 20", 256, "red")
     total_price = smartphone_product + other_product
     assert total_price == 8000.0
 
-    # with pytest.raises(TypeError):
-    #     sample_product + smartphone_product
+
+def test_add_smartphone_and_product(smartphone_product):
+    other_product = Product("Other Product", "Other Description", 15.0, 50)
+    assert smartphone_product + other_product == TypeError
