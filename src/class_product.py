@@ -35,7 +35,6 @@ class Product:
 
     def __str__(self) -> str:
         """Метод для вывода информации о товаре"""
-
         return f"{self.name}, {self.__price} руб. Остаток: {self.quantity} шт."
 
     def __add__(self, other):
@@ -46,13 +45,14 @@ class Product:
 
 
 class Smartphone(Product):
+    """ Класс для предоставления смартфонов"""
 
     def __init__(self, name: str, description: str, price: float, quantity: int, performance: float, model: str,
-                 pmc: int, color: str):
+                 storage_capacity: int, color: str):
         super().__init__(name, description, price, quantity)
         self.performance = performance
         self.model = model
-        self.pmc = pmc
+        self.storage_capacity = storage_capacity
         self.color = color
 
     def __add__(self, other):
@@ -63,12 +63,20 @@ class Smartphone(Product):
 
 
 class Grass(Product):
-    def __init__(self, name: str, description: str, price: float, quantity: int, manufacturer_country: str,
-                 germination_period: str, color: str):
+    """ Класс для предоставления газонной травы"""
+
+    def __init__(self, name: str, description: str, price: float, quantity: int, country: str, germination_period: int,
+                 color: str):
         super().__init__(name, description, price, quantity)
-        self.manufacturer_country = manufacturer_country
+        self.country = country
         self.germination_period = germination_period
         self.color = color
+
+    def __add__(self, other):
+        if not isinstance(other, Grass):
+            return TypeError("Неверный тип данных")
+        else:
+            return self.price * self.quantity + other.price * other.quantity
 
 
 class Tes:
@@ -88,8 +96,3 @@ print(sp)
 print(ss)
 
 
-# def __add__(self, other):
-#     if isinstance(other, Product) and isinstance(other, Smartphone):
-#         return self.price * self.quantity + other.price * other.quantity
-#     else:
-#         return TypeError("Нельзя складывать экземпляры разных классов")
