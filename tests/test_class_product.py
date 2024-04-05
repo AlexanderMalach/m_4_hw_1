@@ -1,6 +1,6 @@
 import pytest
 
-from src.class_product import Product, Smartphone
+from src.class_product import Product, Smartphone, Grass
 
 
 @pytest.fixture
@@ -12,6 +12,10 @@ def sample_product():
 def smartphone_product():
     return Smartphone("Test Product2", "Test Description2", 20.0, 200, 1000, "USSR-fon - 20", 256, "red")
 
+
+@pytest.fixture
+def grass_product():
+    return Grass("Test Product2", "Test Description2", 20.0, 200, "Russian", 10,  "red")
 
 def test_create_product(sample_product):
     assert sample_product.name == "Test Product"
@@ -51,3 +55,5 @@ def test_add_method_smartphone(smartphone_product):
 def test_add_smartphone_and_product(smartphone_product):
     other_product = Product("Other Product", "Other Description", 15.0, 50)
     assert smartphone_product + other_product is TypeError
+
+
