@@ -1,4 +1,4 @@
-from src.class_product import Product
+from src.class_product import Product, Smartphone, Grass
 
 
 class Category:
@@ -15,8 +15,9 @@ class Category:
 
     def add_products(self, product: Product):
         """Метод для добавления товаров в категорию"""
-        self.__products.append(product)
-        Category.total_products += 1
+        if isinstance(product, (Product, Smartphone, Grass)):
+            self.__products.append(product)
+            Category.total_products += 1
 
     def __len__(self):
         total_product = 0
