@@ -18,6 +18,8 @@ class Category:
         if isinstance(product, (Product, Smartphone, Grass)):
             self.__products.append(product)
             Category.total_products += 1
+        else:
+            return TypeError
 
     def __len__(self):
         total_product = 0
