@@ -46,3 +46,4 @@ def test_add_method_smartphone(sample_product, smartphone_product):
     other_smartphone = smartphone_product
     total_price = other_product + other_smartphone
     assert total_price is TypeError
+
