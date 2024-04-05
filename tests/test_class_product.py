@@ -77,3 +77,6 @@ def test_add_method_grass(grass_product):
 def test_add_grass_and_product(grass_product):
     other_product = Product("Other Product", "Other Description", 15.0, 50)
     assert grass_product + other_product is TypeError
+
+# with pytest.raises(TypeError):
+#     class_product + class_smartfon
