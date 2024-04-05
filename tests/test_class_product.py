@@ -8,6 +8,7 @@ def sample_product():
     return Product("Test Product", "Test Description", 10.0, 100)
 
 
+@pytest.fixture
 def smartphone_product():
     return Smartphone("Test Product2", "Test Description2", 20.0, 200, 1000, "USSR-fon - 20", 256, "red")
 
@@ -39,3 +40,9 @@ def test_crete_smartphone(smartphone_product):
     assert smartphone_product.model == "USSR-fon - 20"
     assert smartphone_product.pmc == 256
     assert smartphone_product.color == "red"
+
+def test_add_method_smartphone(sample_product, smartphone_product):
+    other_product = sample_product
+    other_smartphone = smartphone_product
+    total_price = other_product + other_smartphone
+    assert total_price is TypeError
