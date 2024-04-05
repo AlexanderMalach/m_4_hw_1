@@ -53,4 +53,4 @@ class Smartphone(Product):
         self.color = color
 
 
-class Lawn_grass(Product)
+class Lawn_grass(Product):
