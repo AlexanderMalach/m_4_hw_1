@@ -1,11 +1,15 @@
 import pytest
 
-from src.class_product import Product
+from src.class_product import Product, Smartphone, Grass
 
 
 @pytest.fixture
 def sample_product():
     return Product("Test Product", "Test Description", 10.0, 100)
+
+
+def smartphone_product():
+    return Smartphone("Test Product2", "Test Description2", 20.0, 200, 1000, "USSR-fon - 20", 256, "red")
 
 
 def test_create_product(sample_product):
