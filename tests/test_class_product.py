@@ -28,3 +28,14 @@ def test_add_method(sample_product):
     other_product = Product("Other Product", "Other Description", 15.0, 50)
     total_price = sample_product + other_product
     assert total_price == 1750.0
+
+
+def test_crete_smartphone(smartphone_product):
+    assert smartphone_product.name == "Test Product2"
+    assert smartphone_product.description == "Test Description2"
+    assert smartphone_product.price == 20.0
+    assert smartphone_product.quantity == 200
+    assert smartphone_product.performance == 1000.0
+    assert smartphone_product.model == "USSR-fon - 20"
+    assert smartphone_product.pmc == 256
+    assert smartphone_product.color == "red"
