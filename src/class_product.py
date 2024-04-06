@@ -12,13 +12,17 @@ class AbsProduct(ABC):
         pass
 
 
-class Mixin:
+class ReprMixin:
+
+    def __init__(self, *args, **kwargs):
+        super().__init__()
+        print(repr(self))
+
     def __repr__(self):
-        list_copy = [f"{i}{j}" for i, j in self.__dict__.items()]
-        return f'Создан объект {self.__class__.__name__} {", ".join(list_copy)}'
+        return [f'Создан объект {self.__class__.__name__}} {i} {j}'for i, j in self.__dict__.items()]
 
 
-class Product(AbsProduct):
+class Product(AbsProduct, ReprMixin):
     """ Класс для предоставления товара"""
     name: str
     description: str
@@ -26,6 +30,7 @@ class Product(AbsProduct):
     quantity: int
 
     def __init__(self, name: str, description: str, price: float, quantity: int):
+        super().__init__()
         self.name = name
         self.description = description
         self.__price = price
@@ -64,7 +69,7 @@ class Product(AbsProduct):
             return self.price * self.quantity + other.price * other.quantity
 
 
-class Smartphone(Product):
+class Smartphone(Product, ReprMixin):
     """ Класс для предоставления смартфонов"""
 
     def __init__(self, name: str, description: str, price: float, quantity: int, performance: float, model: str,
@@ -82,7 +87,7 @@ class Smartphone(Product):
             return self.price * self.quantity + other.price * other.quantity
 
 
-class Grass(Product):
+class Grass(Product, ReprMixin):
     """ Класс для предоставления газонной травы"""
 
     def __init__(self, name: str, description: str, price: float, quantity: int, country: str, germination_period: int,
@@ -102,5 +107,5 @@ class Grass(Product):
 s = Smartphone("Test Product2", "Test Description2", 20.0, 200, 1000, "USSR-fon - 20", 256, "red")
 p = Product("Test Product", "Test Description", 10.0, 100)
 
-print(s + p)
-print(p + s)
+print(s)
+print(p)
