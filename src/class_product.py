@@ -1,3 +1,17 @@
+from abc import ABC, abstractmethod
+
+
+class AbsProduct(ABC):
+
+    @abstractmethod
+    def __init__(self):
+        pass
+
+    @abstractmethod
+    def __add__(self, other):
+        pass
+
+
 class Product:
     """ Класс для предоставления товара"""
     name: str
@@ -77,4 +91,3 @@ class Grass(Product):
             return TypeError
         else:
             return self.price * self.quantity + other.price * other.quantity
-
