@@ -5,6 +5,7 @@ class AbsProduct(ABC):
 
     @abstractmethod
     def __init__(self):
+        super().__init__()
         pass
 
     @abstractmethod
@@ -12,17 +13,18 @@ class AbsProduct(ABC):
         pass
 
 
-class ReprMixin:
-    def __init__(self, *args, **kwargs):
+class CreationInfoMixin:
+    """Миксин для вывода информации о создании объекта"""
+
+    def __init__(self):
         print(repr(self))
 
     def __repr__(self):
-        attrs = ", ".join([f"{key}={value!r}" for key, value in self.__dict__.items()])
-        return f'Создан объект {self.__class__.__name__}({attrs})'
+        list_p = [f"{key}: {value}" for key, value in self.__dict__.items()]
+        return f"Создан объект класса {self.__class__.__name__}: {', '.join(list_p)}"
 
 
-
-class Product(AbsProduct, ReprMixin):
+class Product(AbsProduct, CreationInfoMixin):
     """ Класс для предоставления товара"""
     name: str
     description: str
@@ -30,6 +32,7 @@ class Product(AbsProduct, ReprMixin):
     quantity: int
 
     def __init__(self, name: str, description: str, price: float, quantity: int):
+        super().__init__()
         self.name = name
         self.description = description
         self.__price = price
@@ -68,7 +71,7 @@ class Product(AbsProduct, ReprMixin):
             return self.price * self.quantity + other.price * other.quantity
 
 
-class Smartphone(Product, ReprMixin):
+class Smartphone(Product, CreationInfoMixin):
     """ Класс для предоставления смартфонов"""
 
     def __init__(self, name: str, description: str, price: float, quantity: int, performance: float, model: str,
@@ -86,7 +89,7 @@ class Smartphone(Product, ReprMixin):
             return self.price * self.quantity + other.price * other.quantity
 
 
-class Grass(Product, ReprMixin):
+class Grass(Product, CreationInfoMixin):
     """ Класс для предоставления газонной травы"""
 
     def __init__(self, name: str, description: str, price: float, quantity: int, country: str, germination_period: int,
@@ -103,5 +106,6 @@ class Grass(Product, ReprMixin):
             return self.price * self.quantity + other.price * other.quantity
 
 
-s = Smartphone("Test Product2", "Test Description2", 20.0, 200, 1000, "USSR-fon - 20", 256, "red")
-p = Product("Test Product", "Test Description", 10.0, 100)
+product1 = Product('Продукт1', 'Описание продукта', 1200, 10)
+smartphone1 = Smartphone('Смартфон1', 'Описание смартфона', 1000, 5, 2.3, 'Модель1', 64, 'Черный')
+grass1 = Grass('Трава1', 'Описание травы', 500, 20, 'Страна1', 14, 'Зеленый')
