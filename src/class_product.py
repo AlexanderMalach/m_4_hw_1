@@ -16,7 +16,8 @@ class AbsProduct(ABC):
 class CreationInfoMixin:
     """Миксин для вывода информации о создании объекта"""
 
-    def __init__(self):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
         print(repr(self))
 
     def __repr__(self):
@@ -71,7 +72,7 @@ class Product(AbsProduct, CreationInfoMixin):
             return self.price * self.quantity + other.price * other.quantity
 
 
-class Smartphone(Product, CreationInfoMixin):
+class Smartphone(Product):
     """ Класс для предоставления смартфонов"""
 
     def __init__(self, name: str, description: str, price: float, quantity: int, performance: float, model: str,
@@ -89,7 +90,7 @@ class Smartphone(Product, CreationInfoMixin):
             return self.price * self.quantity + other.price * other.quantity
 
 
-class Grass(Product, CreationInfoMixin):
+class Grass(Product):
     """ Класс для предоставления газонной травы"""
 
     def __init__(self, name: str, description: str, price: float, quantity: int, country: str, germination_period: int,
