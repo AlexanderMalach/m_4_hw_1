@@ -19,10 +19,10 @@ class ReprMixin:
         print(repr(self))
 
     def __repr__(self):
-        return [f'Создан объект {self.__class__.__name__}} {i} {j}'for i, j in self.__dict__.items()]
+        return f'Создан объект {self.__class__.__name__}, {self.__dict__.items()}'
 
 
-class Product(AbsProduct, ReprMixin):
+class Product(ReprMixin, AbsProduct):
     """ Класс для предоставления товара"""
     name: str
     description: str
