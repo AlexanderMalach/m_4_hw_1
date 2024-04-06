@@ -35,10 +35,46 @@ class Product:
 
     def __str__(self) -> str:
         """Метод для вывода информации о товаре"""
-
         return f"{self.name}, {self.__price} руб. Остаток: {self.quantity} шт."
 
     def __add__(self, other):
-        return self.price * self.quantity + other.price * other.quantity
+        if not isinstance(other, type(self)):
+            return TypeError
+        else:
+            return self.price * self.quantity + other.price * other.quantity
 
+
+class Smartphone(Product):
+    """ Класс для предоставления смартфонов"""
+
+    def __init__(self, name: str, description: str, price: float, quantity: int, performance: float, model: str,
+                 storage_capacity: int, color: str):
+        super().__init__(name, description, price, quantity)
+        self.performance = performance
+        self.model = model
+        self.storage_capacity = storage_capacity
+        self.color = color
+
+    def __add__(self, other):
+        if not isinstance(other, Smartphone):
+            return TypeError
+        else:
+            return self.price * self.quantity + other.price * other.quantity
+
+
+class Grass(Product):
+    """ Класс для предоставления газонной травы"""
+
+    def __init__(self, name: str, description: str, price: float, quantity: int, country: str, germination_period: int,
+                 color: str):
+        super().__init__(name, description, price, quantity)
+        self.country = country
+        self.germination_period = germination_period
+        self.color = color
+
+    def __add__(self, other):
+        if not isinstance(other, Grass):
+            return TypeError
+        else:
+            return self.price * self.quantity + other.price * other.quantity
 
