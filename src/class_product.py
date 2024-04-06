@@ -13,7 +13,9 @@ class AbsProduct(ABC):
 
 
 class MixinLog:
-    ID = 1
+    def __repr__(self):
+        list_copy = [f"{i}{j}" for i, j in self.__dict__.items()]
+        return f'Создан объект {self.__class__.__name__} {", ".join(list_copy)}'
 
 
 class Product(AbsProduct):
@@ -56,7 +58,7 @@ class Product(AbsProduct):
         return f"{self.name}, {self.__price} руб. Остаток: {self.quantity} шт."
 
     def __add__(self, other):
-        if not isinstance(other, type(self)):
+        if type(other) != type(self):
             return TypeError
         else:
             return self.price * self.quantity + other.price * other.quantity
@@ -95,3 +97,10 @@ class Grass(Product):
             return TypeError
         else:
             return self.price * self.quantity + other.price * other.quantity
+
+
+s = Smartphone("Test Product2", "Test Description2", 20.0, 200, 1000, "USSR-fon - 20", 256, "red")
+p = Product("Test Product", "Test Description", 10.0, 100)
+
+print(s + p)
+print(p + s)
