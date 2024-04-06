@@ -13,16 +13,16 @@ class AbsProduct(ABC):
 
 
 class ReprMixin:
-
     def __init__(self, *args, **kwargs):
-        super().__init__()
         print(repr(self))
 
     def __repr__(self):
-        return f'Создан объект {self.__class__.__name__}, {self.__dict__.items()}'
+        attrs = ", ".join([f"{key}={value!r}" for key, value in self.__dict__.items()])
+        return f'Создан объект {self.__class__.__name__}({attrs})'
 
 
-class Product(ReprMixin, AbsProduct):
+
+class Product(AbsProduct, ReprMixin):
     """ Класс для предоставления товара"""
     name: str
     description: str
@@ -30,7 +30,6 @@ class Product(ReprMixin, AbsProduct):
     quantity: int
 
     def __init__(self, name: str, description: str, price: float, quantity: int):
-        super().__init__()
         self.name = name
         self.description = description
         self.__price = price
@@ -106,6 +105,3 @@ class Grass(Product, ReprMixin):
 
 s = Smartphone("Test Product2", "Test Description2", 20.0, 200, 1000, "USSR-fon - 20", 256, "red")
 p = Product("Test Product", "Test Description", 10.0, 100)
-
-print(s)
-print(p)
