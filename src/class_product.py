@@ -12,7 +12,11 @@ class AbsProduct(ABC):
         pass
 
 
-class Product:
+class MixinLog:
+    ID = 1
+
+
+class Product(AbsProduct):
     """ Класс для предоставления товара"""
     name: str
     description: str
