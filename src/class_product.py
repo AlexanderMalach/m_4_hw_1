@@ -12,7 +12,7 @@ class AbsProduct(ABC):
         pass
 
 
-class MixinLog:
+class Mixin:
     def __repr__(self):
         list_copy = [f"{i}{j}" for i, j in self.__dict__.items()]
         return f'Создан объект {self.__class__.__name__} {", ".join(list_copy)}'
