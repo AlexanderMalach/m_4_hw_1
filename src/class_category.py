@@ -21,7 +21,7 @@ class Category:
                 Category.total_products += 1
             else:
                 return TypeError
-        raise ValueError
+        raise ValueError("Товар с нулевым количеством добавить нельзя!")
     def __len__(self):
         total_product = 0
         for i in self.__products:
