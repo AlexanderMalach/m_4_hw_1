@@ -35,4 +35,11 @@ class Category:
 
         return f"{self.name}, количество продуктов: {len(self)} шт."
 
-
+    def average_price(self):
+        try:
+            count_average_price = 0
+            for i in self.__products:
+                count_average_price += i.price
+            result = count_average_price / Category.total_products
+        except ZeroDivisionError:
+            print("Попытка деления на ноль")
