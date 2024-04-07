@@ -62,7 +62,7 @@ class Product(AbsProduct, CreationInfoMixin):
         if quantity == 0:
             return cls(name, description, price, quantity)
         else:
-            raise ValueError
+            raise ValueError("Товар с нулевым количеством добавить нельзя!")
 
     def __str__(self) -> str:
         """Метод для вывода информации о товаре"""
