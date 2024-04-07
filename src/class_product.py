@@ -59,7 +59,10 @@ class Product(AbsProduct, CreationInfoMixin):
         description = dict_info['description']
         price = dict_info['price']
         quantity = dict_info['quantity']
-        return cls(name, description, price, quantity)
+        if quantity == 0:
+            return cls(name, description, price, quantity)
+        else:
+            raise ValueError
 
     def __str__(self) -> str:
         """Метод для вывода информации о товаре"""
