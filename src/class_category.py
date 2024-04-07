@@ -22,6 +22,7 @@ class Category:
             else:
                 return TypeError
         raise ValueError("Товар с нулевым количеством добавить нельзя!")
+
     def __len__(self):
         total_product = 0
         for i in self.__products:
@@ -32,3 +33,5 @@ class Category:
         """Метод для вывода информации о товарах"""
 
         return f"{self.name}, количество продуктов: {len(self)} шт."
+
+
