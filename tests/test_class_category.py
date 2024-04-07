@@ -25,3 +25,9 @@ def test_add_products(sample_category):
 
 def test_category_length(sample_category):
     assert len(sample_category) == 150
+
+
+def test_value_error(sample_category):
+    with pytest.raises(ValueError):
+        new_product = Product("New Product", "New Description", 20.0, 0)
+        sample_category.add_products(new_product)
