@@ -15,12 +15,13 @@ class Category:
 
     def add_products(self, product: Product):
         """Метод для добавления товаров в категорию"""
-        if isinstance(product, (Product, Smartphone, Grass)):
-            self.__products.append(product)
-            Category.total_products += 1
-        else:
-            return TypeError
-
+        if product.quantity !=0:
+            if isinstance(product, (Product, Smartphone, Grass)):
+                self.__products.append(product)
+                Category.total_products += 1
+            else:
+                return TypeError
+        raise ValueError
     def __len__(self):
         total_product = 0
         for i in self.__products:
