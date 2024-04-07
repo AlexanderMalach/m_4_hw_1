@@ -38,6 +38,7 @@ class Product(AbsProduct, CreationInfoMixin):
         self.__price = price
         self.quantity = quantity
         CreationInfoMixin.__init__(self)
+
     @property
     def price(self):
         """Геттер для атрибута цены"""
