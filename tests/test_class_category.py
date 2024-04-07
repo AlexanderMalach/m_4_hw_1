@@ -10,6 +10,12 @@ def sample_category():
     return Category("Test Category", "Test Description", products)
 
 
+@pytest.fixture
+def sample_product_0():
+    products = [Product("Product 1", "Description 1", 0.0, 100), Product("Product 2", "Description 2", 0.0, 50)]
+    return Category("Test Category", "Test Description", products)
+
+
 def test_create_category(sample_category):
     assert sample_category.name == "Test Category"
     assert sample_category.description == "Test Description"
@@ -35,3 +41,7 @@ def test_value_error(sample_category):
 
 def test_average_price_true(sample_category):
     assert sample_category.average_price() == 12.5
+
+
+def test_average_price_exception(sample_product_0):
+    assert sample_product_0.average_price() == 0
