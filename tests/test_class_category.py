@@ -31,3 +31,7 @@ def test_value_error(sample_category):
     with pytest.raises(ValueError):
         new_product = Product("New Product", "New Description", 20.0, 0)
         sample_category.add_products(new_product)
+
+
+def test_average_price_true(sample_category):
+    assert sample_category.average_price() == 12.5

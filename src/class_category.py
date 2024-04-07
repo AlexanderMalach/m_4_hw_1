@@ -43,3 +43,5 @@ class Category:
             result = count_average_price / Category.total_products
         except ZeroDivisionError:
             print("Попытка деления на ноль")
+        else:
+            return result
