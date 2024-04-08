@@ -15,11 +15,14 @@ class Category:
 
     def add_products(self, product: Product):
         """Метод для добавления товаров в категорию"""
-        if isinstance(product, (Product, Smartphone, Grass)):
-            self.__products.append(product)
-            Category.total_products += 1
+        if product.quantity > 0:
+            if isinstance(product, (Product, Smartphone, Grass)):
+                self.__products.append(product)
+                Category.total_products += 1
+            else:
+                return TypeError
         else:
-            return TypeError
+            raise ValueError("Товар с нулевым количеством добавить нельзя!")
 
     def __len__(self):
         total_product = 0
@@ -31,3 +34,14 @@ class Category:
         """Метод для вывода информации о товарах"""
 
         return f"{self.name}, количество продуктов: {len(self)} шт."
+
+    def average_price(self):
+        try:
+            count_average_price = 0
+            for i in self.__products:
+                count_average_price += i.price
+            result = count_average_price / Category.total_products
+        except ZeroDivisionError:
+            return 0
+        else:
+            return result

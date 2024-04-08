@@ -38,6 +38,7 @@ class Product(AbsProduct, CreationInfoMixin):
         self.__price = price
         self.quantity = quantity
         CreationInfoMixin.__init__(self)
+
     @property
     def price(self):
         """Геттер для атрибута цены"""
@@ -58,7 +59,10 @@ class Product(AbsProduct, CreationInfoMixin):
         description = dict_info['description']
         price = dict_info['price']
         quantity = dict_info['quantity']
-        return cls(name, description, price, quantity)
+        if quantity == 0:
+            return cls(name, description, price, quantity)
+        else:
+            raise ValueError("Товар с нулевым количеством добавить нельзя!")
 
     def __str__(self) -> str:
         """Метод для вывода информации о товаре"""
@@ -107,6 +111,6 @@ class Grass(Product):
 
 
 product1 = Product('Продукт1', 'Описание продукта', 1200, 10)
-smartphone1 = Smartphone('Смартфон1', 'Описание смартфона', 1000, 5, 2.3, 'Модель1', 64, 'Черный')
+smartphone1 = Smartphone('Смартфон1', 'Описание смартфона', 1000, 0, 2.3, 'Модель1', 64, 'Черный')
 grass1 = Grass('Трава1', 'Описание травы', 500, 20, 'Страна1', 14, 'Зеленый')
 print(Product.__mro__)
