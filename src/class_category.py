@@ -40,7 +40,7 @@ class Category:
             count_average_price = 0
             for i in self.__products:
                 count_average_price += i.price
-            result = count_average_price / Category.total_products
+            result = count_average_price / len(self.__products)
         except ZeroDivisionError:
             return 0
         else:
